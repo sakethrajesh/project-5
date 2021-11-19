@@ -33,18 +33,4 @@ public class Output {
 
     }
 
-
-    public String toString() {
-        String s = this.name + "\n";
-        for (int i = 0; i < ethnicityList.size(); i++) {
-            s += ethnicityList.get(i).toString() + "\n";
-        }
-        sortCFR();
-        for (int i = 0; i < ethnicityList.size(); i++) {
-            s += ethnicityList.get(i).toString() + "\n";
-        }
-        sortAlphabetical();
-
-    }
-
 }
