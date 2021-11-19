@@ -3,6 +3,8 @@
  */
 package prj5;
 
+import java.text.DecimalFormat;
+
 /**
  * @author Nash Gober
  * @version 2021.11.17
@@ -77,14 +79,30 @@ public class Ethnicity {
         if (deaths == -1 || cases == -1) {
             return -1.0;
         }
+
         return (Double.valueOf(deaths) / Double.valueOf(cases)) * 100.00;
 
     }
 
 
+    /**
+     * Returns the Ethnicity as a String with all it's comparators
+     * 
+     * @return A string containing all of Ethnicities information
+     * 
+     */
+
     public String toString() {
-        String combine = this.ethnicity + ": " + cases + " cases, "
-            + calculatePercentage() + "% CFR";
+        String combine = "";
+        if (calculatePercentage() == -1.0) {
+
+            combine = this.ethnicity + ": " + cases + " cases, " + String
+                .valueOf(calculatePercentage()).substring(0, 2) + "% CFR";
+        }
+        else {
+            combine = this.ethnicity + ": " + cases + " cases, "
+                + calculatePercentage() + "% CFR";
+        }
         return combine;
     }
 
