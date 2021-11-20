@@ -26,6 +26,7 @@ public class StateTest extends TestCase {
         list.add(new Ethnicity("latinx", 2269, 97118));
         list.add(new Ethnicity("other", 170, 108784));
         list.add(new Ethnicity("white", 1924, 70678));
+        list.add(new Ethnicity("other2", 170, 108784));
         
         list2 = new DoublyLinkedList<Ethnicity>();
         list2.add(new Ethnicity("black", 13365, 179563));
@@ -33,6 +34,7 @@ public class StateTest extends TestCase {
         list2.add(new Ethnicity("white", 1924, 70678));
         list2.add(new Ethnicity("latinx", 2269, 97118));
         list2.add(new Ethnicity("other", 170, 108784));
+        list2.add(new Ethnicity("other2", 170, 108784));
         
         state = new State("DC", list);
     }
@@ -76,18 +78,21 @@ public class StateTest extends TestCase {
      * tests that toString() functions correctly
      */
     public void testToString() {
+        System.out.println(state.toString());
         String s = "DC\n"
             + "asain: 5407 cases, 4.7% CFR\n"
             + "black: 179563 cases, 7.4% CFR\n"
             + "latinx: 97118 cases, 2.3% CFR\n"
             + "other: 108784 cases, 0.2% CFR\n"
+            + "other2: 108784 cases, 0.2% CFR\n"
             + "white: 70678 cases, 2.7% CFR\n"
             + "=====\n"
             + "black: 179563 cases, 7.4% CFR\n"
             + "asain: 5407 cases, 4.7% CFR\n"
             + "white: 70678 cases, 2.7% CFR\n"
             + "latinx: 97118 cases, 2.3% CFR\n"
-            + "other: 108784 cases, 0.2% CFR";
+            + "other: 108784 cases, 0.2% CFR\n"
+            + "other2: 108784 cases, 0.2% CFR";
         assertEquals(state.toString(), s);
     }
     
