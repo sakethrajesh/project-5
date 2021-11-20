@@ -1,21 +1,45 @@
 package prj5;
 
+/**
+ * 
+ * State Class
+ * 
+ * @author <Kevin Flint> <flintkt>
+ * @version <11.19.2021>
+ *
+ */
 public class State {
 
     private DoublyLinkedList<Ethnicity> ethnicityList;
     private String name;
-
+    
+    /**
+     * 
+     * Constructor for the State class
+     * Initializes class variables
+     * 
+     * @param inName
+     *      name of the state
+     * @param inEthnicityList
+     *      list of ethnicities in state
+     */
     public State(String inName, DoublyLinkedList<Ethnicity> inEthnicityList) {
         name = inName;
         ethnicityList = inEthnicityList;
     }
 
-
+    /**
+     * Gets the state's list of ethnicities
+     * @return
+     *      state's list of ethnicities
+     */
     public DoublyLinkedList<Ethnicity> getList() {
         return ethnicityList;
     }
 
-
+    /**
+     * Sorts the state's list alphabeticaly 
+     */
     public void sortAlphabetical() {
         for (int i = 0; i < ethnicityList.size(); i++) {
             // find next smallest value in list
@@ -40,7 +64,9 @@ public class State {
         }
     }
 
-
+    /**
+     * Sorts the state's list by cfr
+     */
     public void sortCFR() {
         for (int i = 0; i < ethnicityList.size(); i++) {
             // find next smallest value in list
@@ -69,7 +95,6 @@ public class State {
             
             if ( Math.abs( ((Ethnicity)ethnicityList.get(i)).calculatePercentage() -
                 ((Ethnicity)ethnicityList.get(i + 1)).calculatePercentage() ) < 0.01) {
-                //System.out.println("LOOOOOKKK");
                 if (((Ethnicity)ethnicityList.get(i)).getEthnicityName()
                     .compareTo(((Ethnicity)ethnicityList.get(i + 1))
                         .getEthnicityName()) > 0) {
@@ -84,7 +109,10 @@ public class State {
         
     }
 
-
+    /**
+     * outputs the states ethnicity list in alphabetical order,
+     * then in order by cfr
+     */
     public String toString() {
         String s = this.name + "\n";
         sortAlphabetical();
@@ -104,12 +132,3 @@ public class State {
     }
 
 }
-
-/*
- * String s = "";
- * 
- * // call first sort
- * for (int i = 0; j < ethnicityList.size(); j++) {
- * s += ethnicityList.get(i).toString();
- * }
- */
