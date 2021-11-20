@@ -94,14 +94,15 @@ public class Ethnicity {
 
     public String toString() {
         String combine = "";
+        DecimalFormat df = new DecimalFormat("#.#");
         if (calculatePercentage() == -1.0) {
 
             combine = this.ethnicity + ": " + cases + " cases, " + String
                 .valueOf(calculatePercentage()).substring(0, 2) + "% CFR";
         }
         else {
-            combine = this.ethnicity + ": " + cases + " cases, "
-                + calculatePercentage() + "% CFR";
+            combine = this.ethnicity + ": " + cases + " cases, " + df.format(
+                calculatePercentage()) + "% CFR";
         }
         return combine;
     }

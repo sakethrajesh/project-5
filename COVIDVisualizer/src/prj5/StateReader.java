@@ -69,18 +69,14 @@ public class StateReader {
                 cases[i - 1] = converted;
             }
         }
-        String[] ethnicities = {"white", "black", "latinx", "asian", "other"};
+        String[] ethnicities = { "white", "black", "latinx", "asian", "other" };
         DoublyLinkedList<Ethnicity> e = new DoublyLinkedList<Ethnicity>();
-<<<<<<< HEAD
-        for (int i = 0; i < cases.length; i++) {
-            Ethnicity ethnicity = new Ethnicity(ethnicities[i], deathRates[i], cases[i]);
-=======
         for (int i = 0; i < cases.length - 1; i++) {
-            Ethnicity ethnicity = new Ethnicity(strSplit[i], deathRates[i],
+            Ethnicity ethnicity = new Ethnicity(ethnicities[i], deathRates[i],
                 cases[i]);
->>>>>>> aec4736d4d49f56cc8ace4267c9cd4e5c69e4bcb
             e.add(ethnicity);
         }
+
         State state = new State(strSplit[0], e);
         return state;
 

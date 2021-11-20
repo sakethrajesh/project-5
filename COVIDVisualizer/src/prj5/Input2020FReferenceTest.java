@@ -17,7 +17,6 @@ public class Input2020FReferenceTest extends student.TestCase {
     private String fileName;
     private Scanner fileData;
 
-
     /**
      * sets up any needed variables for test methods
      */
@@ -33,12 +32,19 @@ public class Input2020FReferenceTest extends student.TestCase {
      * Gathers the output from StdOut and compares it to the expected
      * output (stored in CovidOutput_1.txt)
      * 
+     * @throws StateException
+     * @throws NumberFormatException
+     * 
      */
     @Hint("The main method is not working properly with input file "
         + "Cases_and_Deaths_by_race_CRDT_Sep2020.csv")
-    public void testMain01() throws java.io.IOException {
+    public void testMain01()
+        throws java.io.IOException,
+        NumberFormatException,
+        StateException {
 
-        Input.main(new String[] { "Cases_and_Deaths_by_race_CRDT_Sep2020.csv" });
+        Input.main(new String[] {
+            "Cases_and_Deaths_by_race_CRDT_Sep2020.csv" });
 
         fileName = "CovidOutput_1.txt";
 
@@ -58,24 +64,31 @@ public class Input2020FReferenceTest extends student.TestCase {
         }
 
         assertFuzzyEquals("Output not as expected for input file "
-            + "Cases_and_Deaths_by_race_CRDT_Sep2020.csv",
-            covidOutput_1, systemOut().getHistory());
+            + "Cases_and_Deaths_by_race_CRDT_Sep2020.csv", covidOutput_1,
+            systemOut().getHistory());
 
     }
 
 
     /**
-     * Test the program with randomly generated data that have no 
+     * Test the program with randomly generated data that have no
      * NA fields.
      * Gathers the output from StdOut and compares it to
      * the expect output (stored in CovidOutput_2.txt)
      * 
+     * @throws StateException
+     * @throws NumberFormatException
+     * 
      */
     @Hint("The main method is not working properly with input files "
         + "Cases_and_Deaths_by_race_RANDOM_NUMBERS.csv")
-    public void testMain02() throws java.io.IOException {
+    public void testMain02()
+        throws java.io.IOException,
+        NumberFormatException,
+        StateException {
 
-        Input.main(new String[] { "Cases_and_Deaths_by_race_RANDOM_NUMBERS.csv"});
+        Input.main(new String[] {
+            "Cases_and_Deaths_by_race_RANDOM_NUMBERS.csv" });
 
         fileName = "CovidOutput_2.txt";
 
@@ -95,8 +108,8 @@ public class Input2020FReferenceTest extends student.TestCase {
         }
 
         assertFuzzyEquals("Output not as expected for input file "
-            + "Cases_and_Deaths_by_race_RANDOM_NUMBERS.csv", covidOutput_2, systemOut()
-                .getHistory());
+            + "Cases_and_Deaths_by_race_RANDOM_NUMBERS.csv", covidOutput_2,
+            systemOut().getHistory());
 
     }
 
