@@ -329,4 +329,83 @@ public class DoublyLinkedList<E> {
         builder.append("}");
         return builder.toString();
     }
+
+    private class DoublyLinkedListIterator<A> implements Iterator<E> {
+
+        private Node<E> prev;
+        private boolean calledNext;
+
+        /**
+         * Creates a new DLListIterator
+         */
+        public DoublyLinkedListIterator() {
+            prev = tail.previous();
+            calledNext = false;
+        }
+
+
+        /**
+         * 
+         */
+        @Override
+        public boolean hasNext() {
+            // TODO Auto-generated method stub
+            return prev != head;
+        }
+
+
+        /**
+         * 
+         */
+        @Override
+        public E next() {
+            if (this.hasNext()) {
+                calledNext = true;
+                E temp = prev.getData();
+                prev = prev.previous();
+                return temp;
+            }
+            throw new NoSuchElementException();
+        }
+
+
+        /**
+         * 
+         */
+        @Override
+        public void remove() {
+            if (!calledNext) {
+                throw new IllegalStateException(
+                    "need to call next() prior to remove()");
+            }
+
+            if (size == 1) {
+                tail = head;
+                head = tail;
+            }
+            else if (prev.previous() == null) {
+                head.setNext(prev.next());
+                prev.next().setPrevious(head);
+            }
+            else if (prev.next() == null) {
+                tail.setPrevious(prev.previous());
+                prev.previous().setNext(tail);
+            }
+            else {
+                prev.next().setPrevious(prev.previous());
+                prev.previous().setNext(prev.next());
+            }
+            size--;
+            calledNext = false;
+
+        }
+    }
+    
+    /**
+     * 
+     * @return
+     */
+    public Iterator<E> interator() {
+        return new DoublyLinkedListIterator<E>();
+    }
 }
