@@ -332,75 +332,89 @@ public class DoublyLinkedList<E> {
 
     private class DoublyLinkedListIterator<A> implements Iterator<E> {
 
-        private Node<E> prev;
+        private Node<E> next;
         private boolean calledNext;
 
         /**
          * Creates a new DLListIterator
          */
         public DoublyLinkedListIterator() {
-            prev = tail.previous();
+            next = head;
             calledNext = false;
         }
 
 
         /**
-         * 
+         * Checks if there are more elements in the list
+         *
+         * @return true if there are more elements in the list
          */
         @Override
         public boolean hasNext() {
-            // TODO Auto-generated method stub
-            return prev != head;
+            return (next.next() != tail);
         }
 
 
         /**
-         * 
+         * Gets the next value in the list
+         *
+         * @return the next value
+         * @throws NoSuchElementException
+         *             if there are no nodes left in the list
          */
         @Override
         public E next() {
-            if (this.hasNext()) {
-                calledNext = true;
-                E temp = prev.getData();
-                prev = prev.previous();
-                return temp;
+            if (next.next() == tail) {
+                throw new NoSuchElementException();
             }
-            throw new NoSuchElementException();
+            next = next.next();
+            calledNext = true;
+            return next.getData();
         }
 
 
         /**
-         * 
+         * Removes the last object returned with next() from the list
+         *
+         * @throws IllegalStateException
+         *             if next has not been called yet
+         *             and if the element has already been removed
          */
         @Override
         public void remove() {
-            if (!calledNext) {
-                throw new IllegalStateException(
-                    "need to call next() prior to remove()");
-            }
 
-            if (size == 1) {
-                tail = head;
-                head = tail;
+            if (!calledNext) {
+                throw new IllegalStateException("next() must be called first");
             }
-            else if (prev.previous() == null) {
-                head.setNext(prev.next());
-                prev.next().setPrevious(head);
+            Node<E> current = head;
+            boolean found = false;
+            while (current != tail) {
+                if (current == next) {
+                    // connect the previous node to the one after the current
+                    next.previous().setNext(next.next());
+                    // connect the next node to the previous node
+                    next.next().setPrevious(next.previous());
+                    // backtrack one node
+                    next = next.previous();
+                    found = true;
+                    size--;
+                    // if iterator has regressed back to head,
+                    // must call next again
+                    if (next == head) {
+                        calledNext = false;
+                    }
+                }
+                current = current.next;
             }
-            else if (prev.next() == null) {
-                tail.setPrevious(prev.previous());
-                prev.previous().setNext(tail);
+            // reached end of list, element not found
+            if (!found) {
+                throw new IllegalStateException();
             }
-            else {
-                prev.next().setPrevious(prev.previous());
-                prev.previous().setNext(prev.next());
-            }
-            size--;
-            calledNext = false;
 
         }
+
     }
-    
+
     /**
      * 
      * @return
