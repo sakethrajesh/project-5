@@ -26,12 +26,18 @@ public class Input {
             stateRead = new StateReader(args[0]);
         }
         else {
-
+            
+            System.out.println(":D");
+            
+            // create new gui
+            GUIWindow gui = new GUIWindow();
+            
+            /*
             stateRead = new StateReader(
                 "Cases_and_Deaths_by_race_CRDT_Sep2020.csv");
-
+            */
         }
-        Output output = new Output(stateRead.getStateList());
+        //Output output = new Output(stateRead.getStateList());
 
     }
 }
