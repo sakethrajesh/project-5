@@ -175,13 +175,17 @@ public class GUIWindow {
         TextShape title = new TextShape(window.getWidth()/2, 10, titleText);
         window.addShape(title);
         
-        // specify divider length for separate points of data to sit in
-        int horizontalDiv = window.getWidth()/5;
-        
         Iterator stateEthnicities = null; 
         if (currentState != null) {
             stateEthnicities = currentState.getList().iterator();
         }
+        else {
+            System.out.println("Current state is null. No data to draw");
+            return;
+        }
+        
+        // specify divider length for separate points of data to sit in
+        int horizontalDiv = window.getWidth()/currentState.getList().size();
         
         // initialize data visuals
         
@@ -194,15 +198,16 @@ public class GUIWindow {
         // declare variable for current data
         Ethnicity current;
         
-        for (int i = 0; i < 5; i++) {
+        // for each data point in the state
+        for (int i = 0; i < currentState.getList().size(); i++) {
             
-            if (stateEthnicities != null && stateEthnicities.hasNext()) {
+            if (stateEthnicities.hasNext()) {
                 current = (Ethnicity) stateEthnicities.next();
             }
             else {
                 System.out.println("Could not draw visuals, ran out of data. "
                     + "State does not have correct number of"
-                    + " ethnicity data points OR State does not exist");
+                    + " ethnicity data points");
                 return;
             }
             

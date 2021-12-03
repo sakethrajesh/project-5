@@ -28,15 +28,13 @@ public class Input {
         else {
             
 
-            /*
             stateRead = new StateReader(
                 "Cases_and_Deaths_by_race_CRDT_Sep2020.csv");
-            */
             
             // test code
             
             System.out.println("ಠ_ಠ");
-            
+            /*
             DoublyLinkedList<State> states = new DoublyLinkedList<State>();
             
             DoublyLinkedList<Ethnicity> list = new DoublyLinkedList<Ethnicity>();
@@ -50,11 +48,11 @@ public class Input {
             State state = new State("DC", list);
             
             states.add(state);
-            
+            */
             // end of test code
             
             // create new gui
-            GUIWindow gui = new GUIWindow(states);
+            GUIWindow gui = new GUIWindow(stateRead.getStateList());
             
             
         }

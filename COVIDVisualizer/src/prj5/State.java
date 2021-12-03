@@ -27,6 +27,15 @@ public class State {
         name = inName;
         ethnicityList = inEthnicityList;
     }
+    
+    /**
+     * Returns the privately stored name of the state
+     * @return
+     *      the name of the state
+     */
+    public String getName() {
+        return name;
+    }
 
     /**
      * Gets the state's list of ethnicities

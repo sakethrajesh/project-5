@@ -419,7 +419,7 @@ public class DoublyLinkedList<E> {
      * 
      * @return
      */
-    public Iterator<E> interator() {
+    public Iterator<E> iterator() {
         return new DoublyLinkedListIterator<E>();
     }
 }
