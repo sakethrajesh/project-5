@@ -27,13 +27,13 @@ public class Input {
         }
         else {
             
-
             stateRead = new StateReader(
                 "Cases_and_Deaths_by_race_CRDT_Sep2020.csv");
-            
             // test code
             
+            
             System.out.println("ಠ_ಠ");
+            
             /*
             DoublyLinkedList<State> states = new DoublyLinkedList<State>();
             
@@ -41,9 +41,8 @@ public class Input {
             list.add(new Ethnicity("asain", 254, 5407));
             list.add(new Ethnicity("black", 13365, 179563));
             list.add(new Ethnicity("latinx", 2269, 97118));
-            list.add(new Ethnicity("other", 170, 108784));
+            list.add(new Ethnicity("other", -1, -1));
             list.add(new Ethnicity("white", 1924, 70678));
-            list.add(new Ethnicity("other2", 170, 108784));
             
             State state = new State("DC", list);
             

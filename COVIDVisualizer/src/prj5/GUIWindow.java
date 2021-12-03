@@ -1,6 +1,7 @@
 package prj5;
 
 import java.awt.Color;
+import java.text.DecimalFormat;
 import java.util.Iterator;
 import cs2.Button;
 import cs2.Shape;
@@ -213,23 +214,39 @@ public class GUIWindow {
             
             // initialize variables for shape dynamics
             width = 25;
-            height = current.calculatePercentage().intValue() * 20;
+            double normalizedHeight = current.calculatePercentage() * 25;
+            height = (int) normalizedHeight;
             x = horizontalDiv/2 + horizontalDiv * i;
             y = window.getHeight()/2 - height/2;
             
             // create shapes for data point
-            Shape bar = new Shape(x, y, width, height, Color.BLUE);
-            TextShape label = new TextShape(
-                x, y + height + 10, current.getEthnicityName()
-                );
-            TextShape percentage = new TextShape(
-                x, y + height + 35, current.calculatePercentage().toString()
-                );
-            
-            // add to window
-            window.addShape(bar);
-            window.addShape(label);
-            window.addShape(percentage);
+            if (current.calculatePercentage() == -1.0) {
+                TextShape nullLabel = new TextShape(
+                    x, y + height + 10, "NA"
+                    );
+                TextShape label = new TextShape(
+                    x, y + height + 35, current.getEthnicityName()
+                    );
+                window.addShape(nullLabel);
+                window.addShape(label);
+            }
+            else {
+                Shape bar = new Shape(x, y, width, height, Color.BLUE);
+                TextShape label = new TextShape(
+                    x, y + height + 10, current.getEthnicityName()
+                    );
+                DecimalFormat df = new DecimalFormat("#.#");
+                TextShape percentage = new TextShape(
+                    x, 
+                    y + height + 35, 
+                    df.format(current.calculatePercentage()) + "%"
+                    );
+                
+                // add to window
+                window.addShape(bar);
+                window.addShape(label);
+                window.addShape(percentage);
+            }
             
         }
         
