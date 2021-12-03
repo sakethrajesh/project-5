@@ -172,18 +172,21 @@ public class GUIWindow {
         window.removeAllShapes();
         
         // draw title
-        String titleText = "Case Fatality Ratios By Race";
+        String titleText;
+        if (currentState != null) {
+            titleText = currentState.getName() + 
+                " Case Fatality Ratios By Race";
+        }
+        else {
+            System.out.println("Current state is null, can't draw visuals");
+            return;
+        }
         TextShape title = new TextShape(window.getWidth()/2, 10, titleText);
+        title.moveTo(window.getWidth()/2 - title.getWidth()/2, 10);
         window.addShape(title);
         
         Iterator stateEthnicities = null; 
-        if (currentState != null) {
-            stateEthnicities = currentState.getList().iterator();
-        }
-        else {
-            System.out.println("Current state is null. No data to draw");
-            return;
-        }
+        stateEthnicities = currentState.getList().iterator();
         
         // specify divider length for separate points of data to sit in
         int horizontalDiv = window.getWidth()/currentState.getList().size();
@@ -217,7 +220,7 @@ public class GUIWindow {
             double normalizedHeight = current.calculatePercentage() * 25;
             height = (int) normalizedHeight;
             x = horizontalDiv/2 + horizontalDiv * i;
-            y = window.getHeight()/2 - height/2;
+            y = window.getHeight() - height - 175;
             
             // create shapes for data point
             if (current.calculatePercentage() == -1.0) {
@@ -226,6 +229,11 @@ public class GUIWindow {
                     );
                 TextShape label = new TextShape(
                     x, y + height + 35, current.getEthnicityName()
+                    );
+                // center null label text ("NA" text)
+                nullLabel.moveTo(
+                    x + label.getWidth()/2 - nullLabel.getWidth()/2,
+                    y + height + 10
                     );
                 window.addShape(nullLabel);
                 window.addShape(label);
