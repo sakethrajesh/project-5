@@ -9,6 +9,12 @@ import cs2.TextShape;
 import cs2.Window;
 import cs2.WindowSide;
 
+/**
+ * GUI Window class
+ * Class for creating a window object with data visuals
+ * @author Kevin Flint
+ * @version 12.03.2021
+ */
 public class GUIWindow {
     
     private Window window;
@@ -17,14 +23,12 @@ public class GUIWindow {
     // 0 for alphebetical, 1 for cfr
     private int sortType;
     
-    
     public GUIWindow(DoublyLinkedList<State> statesList) {
         
         states = statesList;
         currentState = null;
         // data is initially sorted buy cfr
         sortType = 1;
-        
         
         // initialize window
         window = new Window("Covid-19 Visualization");
@@ -76,6 +80,11 @@ public class GUIWindow {
     
     /* on click methods for the state buttons */
     
+    /**
+     * Method called for DC state button
+     * @param button
+     *      button parameter for cs2 button functionality
+     */
     public void clickedDC(Button button) {
         currentState = getState("DC");
         if (sortType == 0) {
@@ -87,6 +96,11 @@ public class GUIWindow {
         drawInfo();
     }
     
+    /**
+     * Method called for GA state button
+     * @param button
+     *      button parameter for cs2 button functionality
+     */
     public void clickedGA(Button button) {
         currentState = getState("GA");
         if (sortType == 0) {
@@ -98,6 +112,11 @@ public class GUIWindow {
         drawInfo();
     }
     
+    /**
+     * Method called for MD state button
+     * @param button
+     *      button parameter for cs2 button functionality
+     */
     public void clickedMD(Button button) {
         currentState = getState("MD");
         if (sortType == 0) {
@@ -109,6 +128,11 @@ public class GUIWindow {
         drawInfo();
     }
     
+    /**
+     * Method called for NC state button
+     * @param button
+     *      button parameter for cs2 button functionality
+     */
     public void clickedNC(Button button) {
         currentState = getState("NC");
         if (sortType == 0) {
@@ -120,6 +144,11 @@ public class GUIWindow {
         drawInfo();
     }
     
+    /**
+     * Method called for TN state button
+     * @param button
+     *      button parameter for cs2 button functionality
+     */
     public void clickedTN(Button button) {
         currentState = getState("TN");
         if (sortType == 0) {
@@ -131,6 +160,11 @@ public class GUIWindow {
         drawInfo();
     }
     
+    /**
+     * Method called for VA state button
+     * @param button
+     *      button parameter for cs2 button functionality
+     */
     public void clickedVA(Button button) {
         currentState = getState("VA");
         if (sortType == 0) {
@@ -146,6 +180,11 @@ public class GUIWindow {
     
     /* on click methods for sort buttons */
     
+    /**
+     * Method called for the alpha sort method
+     * @param button
+     *      button parameter for cs2 button functionality
+     */
     public void clickedAlphaSort(Button button) {
         sortType = 0;
         if (currentState != null) {
@@ -159,6 +198,11 @@ public class GUIWindow {
         }
     }
     
+    /**
+     * Method called for the cfr sort method
+     * @param button
+     *      button parameter for cs2 button functionality
+     */
     public void clickedCFRSort(Button button) {
         sortType = 1;
         if (currentState != null) {
@@ -300,73 +344,7 @@ public class GUIWindow {
             }
             
         }
-        
-        
-        /*
-        // first
-        
 
-
-        
-        // second
-        width = 25;
-        height = 50;
-        x = x + horizontalDiv;
-        y = window.getHeight()/2 - height/2;
-        Shape second = new Shape(x, y, width, height, Color.BLUE);
-        
-        TextShape secondLabel = new TextShape(x, y + height + 10, "second");
-        TextShape secondPercentage = new TextShape(x, y + height + 35, "%");
-        
-        // third
-        width = 25;
-        height = 50;
-        x = x + horizontalDiv;
-        y = window.getHeight()/2 - height/2;
-        Shape third = new Shape(x, y, width, height, Color.BLUE);
-        
-        TextShape thirdLabel = new TextShape(x, y + height + 10, "third");
-        TextShape thirdPercentage = new TextShape(x, y + height + 35, "%");
-        
-        // fourth
-        width = 25;
-        height = 50;
-        x = x + horizontalDiv;
-        y = window.getHeight()/2 - height/2;
-        Shape fourth = new Shape(x, y, width, height, Color.BLUE);
-        
-        TextShape fourthLabel = new TextShape(x, y + height + 10, "fourth");
-        TextShape fourthPercentage = new TextShape(x, y + height + 35, "%");
-        
-        // fifth
-        width = 25;
-        height = 50;
-        x = x + horizontalDiv;
-        y = window.getHeight()/2 - height/2;
-        Shape fifth = new Shape(x, y, width, height, Color.BLUE);
-        
-        TextShape fifthLabel = new TextShape(x, y + height + 10, "fifth");
-        TextShape fifthPercentage = new TextShape(x, y + height + 35, "%");
-        
-        // add to window
-        window.addShape(first);
-        window.addShape(firstLabel);
-        window.addShape(firstPercentage);
-        window.addShape(second);
-        window.addShape(secondLabel);
-        window.addShape(secondPercentage);
-        window.addShape(third);
-        window.addShape(thirdLabel);
-        window.addShape(thirdPercentage);
-        window.addShape(fourth);
-        window.addShape(fourthLabel);
-        window.addShape(fourthPercentage);
-        window.addShape(fifth);
-        window.addShape(fifthLabel);
-        window.addShape(fifthPercentage);
-        
-        */
-        
     }
     
 }

@@ -23,39 +23,17 @@ public class Input {
         StateException {
         StateReader stateRead;
         if (args.length == 1) {
+            // initialize new state reader
             stateRead = new StateReader(args[0]);
-        }
-        else {
-            
-            stateRead = new StateReader(
-                "Cases_and_Deaths_by_race_CRDT_Sep2020.csv");
-            
-            // test code
-            
-            System.out.println("ಠ_ಠ"); // necessary code, DO NOT REMOVE
-            
-            /*
-            DoublyLinkedList<State> states = new DoublyLinkedList<State>();
-            
-            DoublyLinkedList<Ethnicity> list = new DoublyLinkedList<Ethnicity>();
-            list.add(new Ethnicity("asain", 254, 5407));
-            list.add(new Ethnicity("black", 13365, 179563));
-            list.add(new Ethnicity("latinx", 2269, 97118));
-            list.add(new Ethnicity("other", -1, -1));
-            list.add(new Ethnicity("white", 1924, 70678));
-            
-            State state = new State("DC", list);
-            
-            states.add(state);
-            */
-
-            // end of test code
-            
             // create new gui
             GUIWindow gui = new GUIWindow(stateRead.getStateList());
-            
         }
-        //Output output = new Output(stateRead.getStateList());
-
+        else {
+            // initialize new state reader
+            stateRead = new StateReader(
+                "Cases_and_Deaths_by_race_CRDT_Sep2020.csv");
+            // create new gui
+            GUIWindow gui = new GUIWindow(stateRead.getStateList());
+        }
     }
 }
