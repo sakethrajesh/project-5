@@ -8,6 +8,8 @@ import java.util.NoSuchElementException;
 import student.TestCase;
 
 /**
+ * Tester Class for DoublyLinkedList
+ * 
  * @author Saketh Rajesh
  * @version 11.17.21
  *
@@ -258,5 +260,150 @@ public class DoublyLinkedListTest extends TestCase {
         assertEquals("{A}", list.toString());
         list.add("B");
         assertEquals("{A, B}", list.toString());
+    }
+    
+    /**
+     * Tests removing from an empty list
+     */
+    public void testRemoveFromEmpty() {
+        list.add("dance");
+        list.add(0, "safety");
+        list.clear();
+        assertFalse(list.remove("safety"));
+        Exception exception;
+        exception = null;
+        try {
+            list.remove(0);
+        }
+        catch (IndexOutOfBoundsException e) {
+            exception = e;
+        }
+        assertTrue(exception instanceof IndexOutOfBoundsException);
+
+        DoublyLinkedList<String> emptyList = new DoublyLinkedList<String>();
+        exception = null;
+        try {
+            emptyList.remove(0);
+        }
+        catch (IndexOutOfBoundsException e) {
+            exception = e;
+        }
+        assertTrue(exception instanceof IndexOutOfBoundsException);
+    }
+
+
+    /**
+     * Tests the iterator's hasNext() method
+     */
+    public void testHasNext() {
+        Iterator<String> iter = list.iterator();
+        assertFalse(iter.hasNext());
+        list.add("A");
+        assertTrue(iter.hasNext());
+        list.remove(0);
+        assertFalse(iter.hasNext());
+    }
+
+
+    /**
+     * Tests the iterator's next() method
+     */
+    public void testNext() {
+
+        Iterator<String> iter = list.iterator();
+
+        // no elements in the list, try calling next
+        Exception exception;
+        exception = null;
+        try {
+            iter.next();
+        }
+        catch (NoSuchElementException e) {
+            exception = e;
+        }
+        assertTrue(exception instanceof NoSuchElementException);
+
+        // add item to list, call next
+        list.add("A");
+        assertEquals(iter.next(), "A");
+
+        // reached the end of the list, try calling next
+        exception = null;
+        try {
+            iter.next();
+        }
+        catch (NoSuchElementException e) {
+            exception = e;
+        }
+        assertTrue(exception instanceof NoSuchElementException);
+
+    }
+
+
+    /**
+     * Tests the iterator's remove() method
+     */
+    public void testRemove() {
+
+        Iterator<String> iter = list.iterator();
+
+        list.add("A");
+        list.add("B");
+
+        // next has not been called yet
+        Exception exception;
+        exception = null;
+        try {
+            iter.remove();
+        }
+        catch (IllegalStateException e) {
+            exception = e;
+        }
+        assertTrue(exception instanceof IllegalStateException);
+
+        iter.next();
+        iter.next();
+
+        // reached the end of the list, try calling next
+        exception = null;
+        try {
+            iter.next();
+        }
+        catch (NoSuchElementException e) {
+            exception = e;
+        }
+        assertTrue(exception instanceof NoSuchElementException);
+
+        iter.remove();
+        assertEquals(list.toString(), "{A}");
+        iter.remove();
+        assertEquals(list.toString(), "{}");
+
+        // next needs to be called again
+        exception = null;
+        try {
+            iter.remove();
+        }
+        catch (IllegalStateException e) {
+            exception = e;
+        }
+        assertTrue(exception instanceof IllegalStateException);
+
+        // add element and remove in by the list's own function call
+        list.add("A");
+        iter.next();
+        list.remove(0);
+
+        // element has been removed and is no longer in list,
+        // try removing it with iterator
+        exception = null;
+        try {
+            iter.remove();
+        }
+        catch (IllegalStateException e) {
+            exception = e;
+        }
+        assertTrue(exception instanceof IllegalStateException);
+
     }
 }
