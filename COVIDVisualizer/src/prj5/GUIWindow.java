@@ -20,8 +20,7 @@ public class GUIWindow {
     private Window window;
     private DoublyLinkedList<State> states;
     private State currentState;
-    // 0 for alphebetical, 1 for cfr
-    private int sortType;
+    private int sortType; // 0 for alphebetical, 1 for cfr
     
     public GUIWindow(DoublyLinkedList<State> statesList) {
         
