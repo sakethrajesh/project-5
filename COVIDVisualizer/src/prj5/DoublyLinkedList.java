@@ -1,13 +1,10 @@
-/**
- * 
- */
 package prj5;
 
 import java.util.Iterator;
 import java.util.NoSuchElementException;
 
 /**
- * 
+ * class to create a doublylinkedlist object  
  *
  * @author Saketh Rajesh
  * @version 11.17.21
@@ -416,7 +413,8 @@ public class DoublyLinkedList<E> {
     }
 
     /**
-     * 
+     * iterator constructer that creates iterator for the DoublyLinkedList class
+     *
      * @return
      */
     public Iterator<E> iterator() {
