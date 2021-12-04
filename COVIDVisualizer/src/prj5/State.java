@@ -2,7 +2,7 @@ package prj5;
 
 /**
  * 
- * State Class
+ * State Class that representatives states that holds diffrent Ethnicities
  * 
  * @author <Kevin Flint> <flintkt>
  * @version <11.19.2021>
@@ -12,42 +12,47 @@ public class State {
 
     private DoublyLinkedList<Ethnicity> ethnicityList;
     private String name;
-    
+
     /**
      * 
      * Constructor for the State class
      * Initializes class variables
      * 
      * @param inName
-     *      name of the state
+     *            name of the state
      * @param inEthnicityList
-     *      list of ethnicities in state
+     *            list of ethnicities in state
      */
     public State(String inName, DoublyLinkedList<Ethnicity> inEthnicityList) {
         name = inName;
         ethnicityList = inEthnicityList;
     }
-    
+
+
     /**
      * Returns the privately stored name of the state
+     * 
      * @return
-     *      the name of the state
+     *         the name of the state
      */
     public String getName() {
         return name;
     }
 
+
     /**
-     * Gets the state's list of ethnicities
+     * Gets the state's list of Ethnicities
+     * 
      * @return
-     *      state's list of ethnicities
+     *         state's list of Ethnicities
      */
     public DoublyLinkedList<Ethnicity> getList() {
         return ethnicityList;
     }
 
+
     /**
-     * Sorts the state's list alphabeticaly 
+     * Sorts the state's list alphabeticaly
      */
     public void sortAlphabetical() {
         for (int i = 0; i < ethnicityList.size(); i++) {
@@ -72,6 +77,7 @@ public class State {
             ethnicityList.remove(index + 1);
         }
     }
+
 
     /**
      * Sorts the state's list by cfr
@@ -99,11 +105,12 @@ public class State {
             ethnicityList.remove(i + 1);
             ethnicityList.remove(index + 1);
         }
-        
+
         for (int i = 0; i < ethnicityList.size() - 1; i++) {
-            
-            if ( Math.abs( ((Ethnicity)ethnicityList.get(i)).calculatePercentage() -
-                ((Ethnicity)ethnicityList.get(i + 1)).calculatePercentage() ) < 0.01) {
+
+            if (Math.abs(((Ethnicity)ethnicityList.get(i)).calculatePercentage()
+                - ((Ethnicity)ethnicityList.get(i + 1))
+                    .calculatePercentage()) < 0.01) {
                 if (((Ethnicity)ethnicityList.get(i)).getEthnicityName()
                     .compareTo(((Ethnicity)ethnicityList.get(i + 1))
                         .getEthnicityName()) > 0) {
@@ -111,12 +118,13 @@ public class State {
                     ethnicityList.add(i, ethnicityList.get(i + 1));
                     ethnicityList.remove(i + 2);
                 }
-                
+
             }
-            
+
         }
-        
+
     }
+
 
     /**
      * outputs the states ethnicity list in alphabetical order,

@@ -21,13 +21,10 @@ public class StateReader {
      *  thrown when file is not found
      * @throws NumberFormatException
      * thrown when string can not be cast to Integer
-     * @throws StateException
-     * thrown when line has null values when split
      */
     public StateReader(String fileName)
         throws FileNotFoundException,
-        NumberFormatException,
-        StateException {
+        NumberFormatException {
         inputFile = fileName;
         stateList = new DoublyLinkedList<State>();
         DoublereadFile();
@@ -46,8 +43,7 @@ public class StateReader {
      */
     private DoublyLinkedList<State> DoublereadFile()
         throws FileNotFoundException,
-        NumberFormatException,
-        StateException {
+        NumberFormatException {
         Scanner file = new Scanner(new File(inputFile));
         String[] titles = file.nextLine().split(", *");
         while (file.hasNextLine()) {
@@ -68,12 +64,9 @@ public class StateReader {
      * @return returns a state from informtion on the line
      * @throws NumberFormatException
      * thrown when there is an error casting string to Integer
-     * @throws StateException
-     * thrown when line has null values when split
      */
     private State readLine(String line, String[] titles)
-        throws NumberFormatException,
-        StateException {
+        throws NumberFormatException {
 
         String[] strSplit = line.split(",");
         Integer[] deathRates = new Integer[this.findSplit(titles) - 1];
@@ -118,10 +111,7 @@ public class StateReader {
      * @return index of first item that contins deaths
      * @throws StateException
      */
-    private int findSplit(String[] titles) throws StateException {
-        if (titles == null) {
-            throw new StateException("titles is null");
-        }
+    private int findSplit(String[] titles) {
         for (int i = 0; i < titles.length; i++) {
             if (titles[i].contains("Deaths")) {
                 return i;
