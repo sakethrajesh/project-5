@@ -12,7 +12,7 @@ import java.text.DecimalFormat;
  *          Creates an Ethnicity Object to store in a DoublyLinkedList
  */
 public class Ethnicity {
-    private String ethnicity;
+    private String ethnicity1;
     private int deaths;
     private int cases;
 
@@ -28,7 +28,7 @@ public class Ethnicity {
      *            The number of cases
      */
     public Ethnicity(String ethnicity, int deaths, int cases) {
-        this.ethnicity = ethnicity;
+        this.ethnicity1 = ethnicity;
         this.deaths = deaths;
         this.cases = cases;
 
@@ -42,7 +42,7 @@ public class Ethnicity {
      * @return String of the ethnicity's name
      */
     public String getEthnicityName() {
-        return this.ethnicity;
+        return this.ethnicity1;
     }
 
 
@@ -97,11 +97,11 @@ public class Ethnicity {
         DecimalFormat df = new DecimalFormat("#.#");
         if (calculatePercentage() == -1.0) {
 
-            combine = this.ethnicity + ": " + cases + " cases, " + String
+            combine = this.ethnicity1 + ": " + cases + " cases, " + String
                 .valueOf(calculatePercentage()).substring(0, 2) + "% CFR";
         }
         else {
-            combine = this.ethnicity + ": " + cases + " cases, " + df.format(
+            combine = this.ethnicity1 + ": " + cases + " cases, " + df.format(
                 calculatePercentage()) + "% CFR";
         }
         return combine;

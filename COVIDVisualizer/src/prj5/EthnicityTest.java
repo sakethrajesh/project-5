@@ -22,7 +22,6 @@ public class EthnicityTest extends TestCase {
     public void setUp() {
         white = new Ethnicity("white", 155, 1000);
         black = new Ethnicity("black", 200, 500);
-
     }
 
 
@@ -66,8 +65,14 @@ public class EthnicityTest extends TestCase {
      * tests that calculatePercentage() functions correctly
      */
     public void testCalculatePercentage() {
+        Ethnicity asian = new Ethnicity("asian", -1, -1);
+        Ethnicity asian1 = new Ethnicity("asian", 1, -1);
+        Ethnicity asian2 = new Ethnicity("asian", -1, 1);
         assertEquals(15.5, white.calculatePercentage(), .01);
         assertEquals(40.00, black.calculatePercentage(), .01);
+        assertEquals(-1.00, asian.calculatePercentage(), .01);
+        assertEquals(-1.00, asian1.calculatePercentage(), .01);
+        assertEquals(-1.00, asian2.calculatePercentage(), .01);
     }
 
 
@@ -80,7 +85,7 @@ public class EthnicityTest extends TestCase {
 
         Ethnicity asian = new Ethnicity("asian", -1, 100);
         assertEquals("white: 1000 cases, 15.5% CFR", white.toString());
-        assertEquals("black: 500 cases, 40.0% CFR", black.toString());
-        assertEquals("asian: 100 cases, -1.0% CFR", asian.toString());
+        assertEquals("black: 500 cases, 40% CFR", black.toString());
+        assertEquals("asian: 100 cases, -1% CFR", asian.toString());
     }
 }
