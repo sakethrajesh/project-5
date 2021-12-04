@@ -6,15 +6,19 @@ package prj5;
 import student.TestCase;
 
 /**
+ * Test class for the ethnicity class
+ * 
  * @author Nash Gober
  * @version 2021.11.18
  * 
- *          Tests Ethnicity
  */
 public class EthnicityTest extends TestCase {
     private Ethnicity white;
     private Ethnicity black;
 
+    /**
+     * set up method for the ethnicity test class
+     */
     public void setUp() {
         white = new Ethnicity("white", 155, 1000);
         black = new Ethnicity("black", 200, 500);
@@ -22,12 +26,22 @@ public class EthnicityTest extends TestCase {
     }
 
 
+    /**
+     * Test method for the getEthnicityName() method
+     * of the EthnicityTest Class
+     * tests that getEthnicityName() functions correctly
+     */
     public void testGetEthnicityName() {
         assertEquals(white.getEthnicityName(), "white");
         assertEquals(black.getEthnicityName(), "black");
     }
 
 
+    /**
+     * Test method for the getGetDeaths() method
+     * of the EthnicityTest Class
+     * tests that getGetDeaths() functions correctly
+     */
     public void testGetDeaths() {
         assertEquals(155, white.getDeaths());
         assertEquals(200, black.getDeaths());
@@ -35,18 +49,33 @@ public class EthnicityTest extends TestCase {
     }
 
 
+    /**
+     * Test method for the getCases() method
+     * of the EthnicityTest Class
+     * tests that getCases() functions correctly
+     */
     public void testGetCases() {
         assertEquals(1000, white.getCases());
         assertEquals(500, black.getCases());
     }
 
 
+    /**
+     * Test method for the calculatePercentage() method
+     * of the EthnicityTest Class
+     * tests that calculatePercentage() functions correctly
+     */
     public void testCalculatePercentage() {
         assertEquals(15.5, white.calculatePercentage(), .01);
         assertEquals(40.00, black.calculatePercentage(), .01);
     }
 
 
+    /**
+     * Test method for the toString() method
+     * of the EthnicityTest Class
+     * tests that toString() functions correctly
+     */
     public void testToString() {
 
         Ethnicity asian = new Ethnicity("asian", -1, 100);

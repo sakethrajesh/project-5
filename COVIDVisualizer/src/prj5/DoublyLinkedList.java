@@ -4,7 +4,7 @@ import java.util.Iterator;
 import java.util.NoSuchElementException;
 
 /**
- * class to create a doublylinkedlist object  
+ * class to create a doublylinkedlist object
  *
  * @author Saketh Rajesh
  * @version 11.17.21
@@ -327,6 +327,14 @@ public class DoublyLinkedList<E> {
         return builder.toString();
     }
 
+    /**
+     * Iterator class for Doubly linked list
+     * 
+     * @author Kevin Flint
+     * @version 12.03.2021
+     * @param <A>
+     *            Generic type for list
+     */
     private class DoublyLinkedListIterator<A> implements Iterator<E> {
 
         private Node<E> next;
@@ -416,6 +424,7 @@ public class DoublyLinkedList<E> {
      * iterator constructer that creates iterator for the DoublyLinkedList class
      *
      * @return
+     *         returns a new iterator for the doubly linked list class
      */
     public Iterator<E> iterator() {
         return new DoublyLinkedListIterator<E>();

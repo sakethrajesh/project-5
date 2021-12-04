@@ -129,13 +129,15 @@ public class State {
     /**
      * outputs the states ethnicity list in alphabetical order,
      * then in order by cfr
+     * 
+     * @return
+     *         a string representation of the data in the ethnicity class
      */
     public String toString() {
         String s = this.name + "\n";
         sortAlphabetical();
         for (int i = 0; i < ethnicityList.size(); i++) {
             s += ethnicityList.get(i).toString() + "\n";
-
         }
         s += "=====" + "\n";
         sortCFR();

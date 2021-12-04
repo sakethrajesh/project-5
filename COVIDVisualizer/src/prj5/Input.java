@@ -1,13 +1,12 @@
-/**
- * 
- */
 package prj5;
 
 import java.io.FileNotFoundException;
 
 /**
- * @author Saketh
- *
+ * Class for taking in input and running the program and gui
+ * 
+ * @author Saketh Rajesh
+ * @version 12.03.2021
  */
 public class Input {
 

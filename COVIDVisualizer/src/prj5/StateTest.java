@@ -1,10 +1,9 @@
 package prj5;
 
-import list.ListInterface;
 import student.TestCase;
 
 /**
- * 
+ * Test class for the state class
  * @author <Kevin Flint> <flintkt>
  * @version <11.19.2021>
  *
@@ -95,7 +94,5 @@ public class StateTest extends TestCase {
             + "other2: 108784 cases, 0.2% CFR";
         assertEquals(state.toString(), s);
     }
-    
-    
     
 }

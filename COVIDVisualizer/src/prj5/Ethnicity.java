@@ -17,7 +17,7 @@ public class Ethnicity {
     private int cases;
 
     /**
-     * Constructor for Ethnicity, assings parameters to private variables
+     * Constructor for Ethnicity, assigns parameters to private variables
      * 
      * 
      * @param ethnicity

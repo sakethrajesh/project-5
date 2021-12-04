@@ -18,9 +18,9 @@ public class StateReader {
      *
      * @param fileName
      * @throws FileNotFoundException
-     *  thrown when file is not found
+     *             thrown when file is not found
      * @throws NumberFormatException
-     * thrown when string can not be cast to Integer
+     *             thrown when string can not be cast to Integer
      */
     public StateReader(String fileName)
         throws FileNotFoundException,
@@ -31,15 +31,18 @@ public class StateReader {
 
     }
 
+
     /**
-     * Reads the file in class and creates a DoublyLinked list that contains states
+     * Reads the file in class and creates a DoublyLinked list that contains
+     * states
+     * 
      * @return doublyLinkedList of States
      * @throws FileNotFoundException
-     *  thrown when file is not found
+     *             thrown when file is not found
      * @throws NumberFormatException
-     * thrown when string can not be cast to Integer
+     *             thrown when string can not be cast to Integer
      * @throws StateException
-     * thrown when line has null values when split
+     *             thrown when line has null values when split
      */
     private DoublyLinkedList<State> DoublereadFile()
         throws FileNotFoundException,
@@ -55,15 +58,18 @@ public class StateReader {
 
     }
 
+
     /**
-     * This method reads the line and creates a state object from the parsed information
+     * This method reads the line and creates a state object from the parsed
+     * information
+     * 
      * @param line
-     * next line that needs to be parasesd
+     *            next line that needs to be parasesd
      * @param titles
-     * titles of the coloms of csv file
+     *            titles of the coloms of csv file
      * @return returns a state from informtion on the line
      * @throws NumberFormatException
-     * thrown when there is an error casting string to Integer
+     *             thrown when there is an error casting string to Integer
      */
     private State readLine(String line, String[] titles)
         throws NumberFormatException {
@@ -104,6 +110,7 @@ public class StateReader {
 
     }
 
+
     /**
      * This method finds the index at which the the changes from cases to deaths
      *
@@ -120,6 +127,7 @@ public class StateReader {
         return -1;
 
     }
+
 
     /**
      * getterMethod for stateList
