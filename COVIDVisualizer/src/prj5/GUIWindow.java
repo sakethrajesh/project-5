@@ -20,14 +20,14 @@ public class GUIWindow {
     private Window window;
     private DoublyLinkedList<State> states;
     private State currentState;
-    private int sortType; // 0 for alphebetical, 1 for cfr
+    private SortType sortType;
     
     public GUIWindow(DoublyLinkedList<State> statesList) {
         
         states = statesList;
         currentState = null;
         // data is initially sorted buy cfr
-        sortType = 1;
+        sortType = SortType.CFR;
         
         // initialize window
         window = new Window("Covid-19 Visualization");
@@ -86,10 +86,10 @@ public class GUIWindow {
      */
     public void clickedDC(Button button) {
         currentState = getState("DC");
-        if (sortType == 0) {
+        if (sortType == SortType.Alpha) {
             currentState.sortAlphabetical();
         }
-        else if (sortType == 1) {
+        else if (sortType == SortType.CFR) {
             currentState.sortCFR();
         }
         drawInfo();
@@ -102,10 +102,10 @@ public class GUIWindow {
      */
     public void clickedGA(Button button) {
         currentState = getState("GA");
-        if (sortType == 0) {
+        if (sortType == SortType.Alpha) {
             currentState.sortAlphabetical();
         }
-        else if (sortType == 1) {
+        else if (sortType == SortType.CFR) {
             currentState.sortCFR();
         }
         drawInfo();
@@ -118,10 +118,10 @@ public class GUIWindow {
      */
     public void clickedMD(Button button) {
         currentState = getState("MD");
-        if (sortType == 0) {
+        if (sortType == SortType.Alpha) {
             currentState.sortAlphabetical();
         }
-        else if (sortType == 1) {
+        else if (sortType == SortType.CFR) {
             currentState.sortCFR();
         }
         drawInfo();
@@ -134,10 +134,10 @@ public class GUIWindow {
      */
     public void clickedNC(Button button) {
         currentState = getState("NC");
-        if (sortType == 0) {
+        if (sortType == SortType.Alpha) {
             currentState.sortAlphabetical();
         }
-        else if (sortType == 1) {
+        else if (sortType == SortType.CFR) {
             currentState.sortCFR();
         }
         drawInfo();
@@ -150,10 +150,10 @@ public class GUIWindow {
      */
     public void clickedTN(Button button) {
         currentState = getState("TN");
-        if (sortType == 0) {
+        if (sortType == SortType.Alpha) {
             currentState.sortAlphabetical();
         }
-        else if (sortType == 1) {
+        else if (sortType == SortType.CFR) {
             currentState.sortCFR();
         }
         drawInfo();
@@ -166,10 +166,10 @@ public class GUIWindow {
      */
     public void clickedVA(Button button) {
         currentState = getState("VA");
-        if (sortType == 0) {
+        if (sortType == SortType.Alpha) {
             currentState.sortAlphabetical();
         }
-        else if (sortType == 1) {
+        else if (sortType == SortType.CFR) {
             currentState.sortCFR();
         }
         drawInfo();
@@ -185,7 +185,7 @@ public class GUIWindow {
      *      button parameter for cs2 button functionality
      */
     public void clickedAlphaSort(Button button) {
-        sortType = 0;
+        sortType = SortType.Alpha;
         if (currentState != null) {
             // sort the data in the state alphabetically
             currentState.sortAlphabetical();
@@ -203,7 +203,7 @@ public class GUIWindow {
      *      button parameter for cs2 button functionality
      */
     public void clickedCFRSort(Button button) {
-        sortType = 1;
+        sortType = SortType.CFR;
         if (currentState != null) {
             // sort the data in the state alphabetically
             currentState.sortCFR();;
