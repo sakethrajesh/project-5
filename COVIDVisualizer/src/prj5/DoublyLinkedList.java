@@ -19,7 +19,7 @@ public class DoublyLinkedList<E> {
      * after it in the list
      *
      * @author Saketh Rajesh
-     * @version 4/14/2015
+     * @version 11.17.21
      * @param <E>
      *            This is the type of object that this class will store
      */
