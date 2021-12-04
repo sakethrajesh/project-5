@@ -32,7 +32,7 @@ public class Input {
             
             // test code
             
-            System.out.println("ಠ_ಠ"); // necessary code
+            System.out.println("ಠ_ಠ"); // necessary code, DO NOT REMOVE
             
             /*
             DoublyLinkedList<State> states = new DoublyLinkedList<State>();
